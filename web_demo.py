@@ -9,7 +9,7 @@ from infer_stream import get_model
 
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 max_generate_length: int = 1024
-model_path = "tigerbot-7b-sft"
+model_path = "/data/home/yaokj5/dl/models/tigerbot-7b-sft"
 print(f"loading model: {model_path}...")
 model = get_model(model_path)
 from infer_stream import stream_chat
@@ -135,4 +135,4 @@ with gr.Blocks() as demo:
 
     emptyBtn.click(reset_state, outputs=[chatbot, history], show_progress=True)
 
-demo.queue().launch(share=False, inbrowser=True)
+demo.queue().launch(share=False, inbrowser=True,debug=False,server_name='0.0.0.0',server_port=7865)
